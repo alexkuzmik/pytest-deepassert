@@ -16,6 +16,7 @@ SPECIAL_COMPARISON_HELPERS_TYPES = [
 
 try:
     import _pytest.python_api
+
     SPECIAL_COMPARISON_HELPERS_TYPES.append(type(_pytest.python_api.ApproxBase))
 except ImportError:
     pass

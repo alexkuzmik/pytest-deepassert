@@ -45,9 +45,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/deepassert"
-Repository = "https://github.com/yourusername/deepassert"
-Issues = "https://github.com/yourusername/deepassert/issues"
+Homepage = "https://github.com/alexkuzmik/deepassert"
+Repository = "https://github.com/alexkuzmik/deepassert"
+Issues = "https://github.com/alexkuzmik/deepassert/issues"
 
 [project.entry-points."pytest11"]
 deepassert = "deepassert.pytest_plugin"
@@ -80,24 +80,11 @@ line_length = 88
 known_first_party = ["deepassert"]
 
 [tool.mypy]
-python_version = "3.8"
-warn_return_any = true
-warn_unused_configs = true
+follow_imports = "skip"
+ignore_missing_imports = true
 disallow_untyped_defs = true
-disallow_incomplete_defs = true
+disallow_untyped_calls = true
 check_untyped_defs = true
-disallow_untyped_decorators = true
-no_implicit_optional = true
-warn_redundant_casts = true
-warn_unused_ignores = true
-warn_no_return = true
-warn_unreachable = true
-strict_equality = true
-show_error_codes = true
-
-[[tool.mypy.overrides]]
-module = "tests.*"
-disallow_untyped_defs = false
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

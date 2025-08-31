@@ -6,7 +6,7 @@ from unittest import mock
 class AnyButNone:
     """A helper object that compares equal to everything but None."""
 
-    def __eq__(self, other):
+    def __eq__(self, other) -> bool:
         if other is None:
             return False
 
