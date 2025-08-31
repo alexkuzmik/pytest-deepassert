@@ -1,0 +1,24 @@
+[flake8]
+max-line-length = 88
+extend-ignore = 
+    # E203: whitespace before ':' (conflicts with black)
+    E203,
+    # W503: line break before binary operator (conflicts with black)
+    W503,
+    # E501: line too long (handled by black)
+    E501
+exclude = 
+    .git,
+    __pycache__,
+    .venv,
+    venv,
+    build,
+    dist,
+    *.egg-info
+per-file-ignores =
+    # Ignore missing docstrings in __init__.py files
+    __init__.py:D104
+    # Ignore missing docstrings in test files
+    tests/*:D100,D101,D102,D103,D104
+max-complexity = 10
+docstring-convention = google
