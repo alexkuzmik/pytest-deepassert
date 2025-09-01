@@ -9,7 +9,7 @@ description = "A pytest plugin for enhanced assertion reporting with detailed di
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
-    {name = "alexkuzmik", email = "alexander.kuzmik99@gmail.com"},
+    {name = "Alexander Kuzmik", email = "alexander.kuzmik99@gmail.com"},
 ]
 keywords = ["pytest", "plugin", "testing", "assertions", "diff", "debugging"]
 classifiers = [
@@ -41,7 +41,6 @@ dev = [
     "mypy>=1.5.0",
     "pre-commit>=3.0.0",
     "pytest>=7.0.0",
-    "pytest-cov>=4.0.0",
     "pytest-xdist>=3.0.0",
 ]
 
@@ -95,10 +94,6 @@ python_functions = ["test_*"]
 addopts = [
     "--strict-markers",
     "--strict-config",
-    "--cov=pytest_deepassert",
-    "--cov-report=term-missing",
-    "--cov-report=html",
-    "--cov-report=xml",
 ]
 markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
