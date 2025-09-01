@@ -8,7 +8,7 @@ class CompareHelpersDeepdiffOperator(deepdiff.operator.BaseOperatorPlus):
     """
     A deepdiff operator for comparing objects.
 
-    Designed to support use cases when one of the comparison arguments is a 
+    Designed to support use cases when one of the comparison arguments is a
     special comparison helper type, for example mock.ANY or pytest.approx(...) instance.
     """
 

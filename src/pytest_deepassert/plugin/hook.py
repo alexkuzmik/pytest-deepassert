@@ -4,7 +4,7 @@ from pytest_deepassert import diff_report
 import _pytest.assertion.util
 
 
-def pytest_addoption(parser):
+def pytest_addoption(parser):  # type: ignore
     """Add command line options for pytest-deepassert."""
     group = parser.getgroup("deepassert")
     group.addoption(
@@ -13,12 +13,10 @@ def pytest_addoption(parser):
         help="Disable deep assertion diffs from pytest-deepassert",
     )
 
+
 @pytest.hookimpl(tryfirst=True)
 def pytest_assertrepr_compare(
-    config: pytest.Config,
-    op: str,
-    left: Any,
-    right: Any
+    config: pytest.Config, op: str, left: Any, right: Any
 ) -> Optional[List[str]]:
     """
     Custom hook that enhances pytest's assertion comparison output.
@@ -35,7 +33,7 @@ def pytest_assertrepr_compare(
     """
     if config.getoption("--no-deepassert"):
         return None
-    
+
     # Only handle equality comparisons
     if op != "==":
         return None
@@ -44,13 +42,13 @@ def pytest_assertrepr_compare(
         return None
 
     diff_lines = diff_report.generate_diff_report_lines(expected=right, actual=left)
-    
+
     if diff_lines is None or len(diff_lines) == 0:
         return None
 
     result = []
 
-    result.extend(_formatted_deepassert_diff_lines(diff_lines))        
+    result.extend(_formatted_deepassert_diff_lines(diff_lines))
     result.append("")
 
     standard_diff = _pytest.assertion.util.assertrepr_compare(config, op, left, right)
@@ -70,7 +68,7 @@ def _formatted_deepassert_diff_lines(diff_lines: List[str]) -> List[str]:
 
     result.append("")
     result.append("DeepAssert detailed comparison:")
-    
+
     for line in diff_lines:
         if line.strip():
             result.append(f"    {line}")

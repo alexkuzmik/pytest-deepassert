@@ -8,9 +8,13 @@ import logging
 LOGGER = logging.getLogger(__name__)
 
 
-def generate_diff_report_lines(expected: Any, actual: Any, **kwargs) -> Optional[List[str]]:
+def generate_diff_report_lines(
+    expected: Any, actual: Any, **kwargs: Any
+) -> Optional[List[str]]:
     try:
-        custom_operator = compare_helpers_deepdiff_operator.COMPARE_HELPERS_DEEPDIFF_OPERATOR
+        custom_operator = (
+            compare_helpers_deepdiff_operator.COMPARE_HELPERS_DEEPDIFF_OPERATOR
+        )
 
         diff = deepdiff.DeepDiff(
             expected,

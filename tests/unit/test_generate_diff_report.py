@@ -1,4 +1,4 @@
-import pytest
+from pytest_deepassert import diff_report
 
 
 def test_generate_diff_report__no_diff():
@@ -6,20 +6,12 @@ def test_generate_diff_report__no_diff():
         "a": 1,
         "b": 2,
         "c": None,
-        "d": "d-value1",
-        "e": {"e-nested-value": "e-nested-value1"},
     }
 
     d2 = {
         "a": 1,
-        "b": 2,
-        "c": 3,
-        "d": "d-value2",
-        "e": {"e-nested-value": "e-nested-value2"},
+        "b": 42,
+        "c": 100,
     }
-
-    assert d1 == d2, "Some long assertion message to check if pytest assertion hook is still working"
-
-
-if __name__ == "__main__":
-    pytest.main()
+    lines = diff_report.generate_diff_report_lines(d1, d2)
+    assert len(lines) == 2
