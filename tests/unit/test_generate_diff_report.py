@@ -1,4 +1,4 @@
-from deepassert.diff_report.report_generator import generate_diff_report
+import pytest
 
 
 def test_generate_diff_report__no_diff():
@@ -10,12 +10,16 @@ def test_generate_diff_report__no_diff():
         "e": {"e-nested-value": "e-nested-value1"},
     }
 
-    # d2 = {
-    #     "a": 1,
-    #     "b": ANY_BUT_NONE,
-    #     "c": ANY,
-    #     "d": "d-value2",
-    #     "e": {"e-nested-value": "e-nested-value2"},
-    # }
+    d2 = {
+        "a": 1,
+        "b": 2,
+        "c": 3,
+        "d": "d-value2",
+        "e": {"e-nested-value": "e-nested-value2"},
+    }
 
-    assert generate_diff_report(d1, d1) == ""
+    assert d1 == d2, "Some long assertion message to check if pytest assertion hook is still working"
+
+
+if __name__ == "__main__":
+    pytest.main()

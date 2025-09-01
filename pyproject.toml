@@ -3,16 +3,15 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "deepassert"
+name = "pytest-deepassert"
 version = "0.1.0"
-description = "A library for smart Python assertions with detailed reporting"
-readme = "README.md"
+description = "A pytest plugin for enhanced assertion reporting with detailed diffs"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
-    {name = "Your Name", email = "your.email@example.com"},
+    {name = "alexkuzmik", email = "alexander.kuzmik99@gmail.com"},
 ]
-keywords = ["testing", "assertions", "debugging", "development"]
+keywords = ["pytest", "plugin", "testing", "assertions", "diff", "debugging"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -23,6 +22,8 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Framework :: Pytest",
     "Topic :: Software Development :: Testing",
     "Topic :: Software Development :: Debuggers",
 ]
@@ -45,15 +46,15 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/alexkuzmik/deepassert"
-Repository = "https://github.com/alexkuzmik/deepassert"
-Issues = "https://github.com/alexkuzmik/deepassert/issues"
+Homepage = "https://github.com/alexkuzmik/pytest-deepassert"
+Repository = "https://github.com/alexkuzmik/pytest-deepassert"
+Issues = "https://github.com/alexkuzmik/pytest-deepassert/issues"
 
 [project.entry-points."pytest11"]
-deepassert = "deepassert.pytest_plugin"
+pytest-deepassert = "pytest_deepassert.plugin.hook"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/deepassert"]
+packages = ["src/pytest_deepassert"]
 
 [tool.black]
 line-length = 88
@@ -77,7 +78,7 @@ extend-exclude = '''
 profile = "black"
 multi_line_output = 3
 line_length = 88
-known_first_party = ["deepassert"]
+known_first_party = ["pytest_deepassert"]
 
 [tool.mypy]
 follow_imports = "skip"
@@ -94,7 +95,7 @@ python_functions = ["test_*"]
 addopts = [
     "--strict-markers",
     "--strict-config",
-    "--cov=deepassert",
+    "--cov=pytest_deepassert",
     "--cov-report=term-missing",
     "--cov-report=html",
     "--cov-report=xml",
