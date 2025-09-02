@@ -67,7 +67,7 @@ cd pytest-deepassert
 pip install -e .
 ```
 
-**Requirements**: Python 3.8+ and pytest 7.0+
+**Requirements**: Python 3.8+ and pytest 6.0+
 
 ## 🌟 Key Features
 
@@ -81,7 +81,7 @@ pip install -e .
 - 🔍 Shows **specific field names** and **array indices**
 
 ### 🔄 **Clear Change Description**
-- ➡️ Shows `old value` → `new value` for each difference
+- ➡️ Shows `left value` → `right value` for each difference
 - 📂 Categorizes changes (values changed, items added/removed)
 - 🏷️ **Human-readable** change descriptions
 
