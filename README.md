@@ -1,5 +1,5 @@
 <div align="center">
-    
+
 # 🔍 pytest-deepassert
 
 </div>
