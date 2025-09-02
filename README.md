@@ -43,7 +43,7 @@ If you've ever struggled with understanding **WHAT EXACTLY** is mismatching in y
 
 ## How it works
 
-`pytest-deepassert` is a powerful pytest plugin built on [`deepdiff`](https://github.com/seperman/deepdiff) library. It provides **clear, detailed difference reports** for various data types:
+`pytest-deepassert` is a pytest plugin built on powerful [`deepdiff`](https://github.com/seperman/deepdiff) library. It provides **clear, detailed difference reports** for various data types:
 
 - **Basic types**: `int`, `string`, `float`, `bool`
 - **Collections**: `dict`, `list`, `tuple`, `set`, `frozenset`
