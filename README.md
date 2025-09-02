@@ -32,7 +32,7 @@
 
 ## What is it for?
 
-When testing complex data structures equality, you may have situations when only some small details differ, but it is really hard to see which ones because of the cluttered comparison report:
+When testing that one complex data structure equals another, you may have situations when only some small details differ, but it is really hard to see which ones because of the cluttered comparison report:
 
 - **Quicker identification** of differences in large & nested objects
 - **Focused output** that highlights what matters
