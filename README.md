@@ -76,7 +76,7 @@ pip install -e .
 ### **Precise Error Location**
 - Pinpoints **exact paths** where differences occur
 - No more hunting through massive data dumps
-- Shows **specific field names** and **array indices**
+- Shows **specific field names**, **values**, and **array indices**
 
 ### **Clear Change Description**
 - Shows `left value` → `right value` for each difference
@@ -84,8 +84,7 @@ pip install -e .
 - **Human-readable** change descriptions
 
 ### **Smart Comparison Helpers**
-- Works seamlessly with `pytest.approx()`, `mock.ANY`
-- Supports **custom comparison helpers**
+- Works seamlessly with `pytest.approx()`, `mock.ANY` and any custom comparator utilities
 - Handles complex nested structures intelligently
 
 ### **Zero Configuration**
@@ -97,7 +96,7 @@ pip install -e .
 
 ## 📊 Comparison with Standard Assertions
 
-> **TL;DR**: Standard pytest assertions work great for simple cases, but `pytest-deepassert` provides enhanced clarity for complex data structures.
+> **TL;DR**: Standard pytest assertions work great for simple cases, but their string comparison reports are not optimized for complex data structures and utility comparator objects. That's where `pytest-deepassert` shines.
 
 ### Example 1: Complex Dictionary Comparison
 
