@@ -1,0 +1,25 @@
+---
+name: Linter
+run-name: "Linter ${{ github.ref_name }} by @${{ github.actor }}"
+on:
+  pull_request:
+    paths:
+    - 'src/**'
+  push:
+    branches: 
+      - 'main'
+    paths:
+      - 'src/**'
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: src
+    steps:
+      - uses: actions/checkout@v4
+      - name: install pre-commit
+        run: pip install pre-commit
+      - name: linting
+        run: pre-commit run --all-files --show-diff-on-failure
