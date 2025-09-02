@@ -429,6 +429,8 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 **Made by [Alexander Kuzmik](https://github.com/alexkuzmik)**
 
+*This plugin comes from my desire to share a tool that I initially built for myself and my team while working on [https://github.com/comet-ml/opik](https://github.com/comet-ml/opik) python library. It's quite simple and yet it saved me a ton of time.*
+
 *If this project helped you, please consider giving it a star on GitHub!*
 
 </div>
