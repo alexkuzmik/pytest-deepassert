@@ -15,40 +15,40 @@
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
-- [🎯 Why pytest-deepassert?](#-why-pytest-deepassert)
-- [✨ How it works](#-how-it-works)
-- [🚀 Installation](#-installation)
-- [🌟 Key Features](#-key-features)
-- [📊 Comparison with Standard Assertions](#-comparison-with-standard-assertions)
-- [💡 Usage](#-usage)
-- [⚙️ Configuration](#️-configuration)
-- [🔧 API Reference](#-api-reference)
-- [⚠️ Limitations](#️-limitations)
-- [📄 License](#-license)
+- [Why pytest-deepassert?](#why-pytest-deepassert)
+- [How it works](#how-it-works)
+- [Installation](#installation)
+- [Key Features](#key-features)
+- [Comparison with Standard Assertions](#comparison-with-standard-assertions)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [API Reference](#api-reference)
+- [Limitations](#limitations)
+- [License](#license)
 
 ---
 
-## 🎯 Why pytest-deepassert?
+## Why pytest-deepassert?
 
 When testing complex data structures equality, you may have situations when only some small details differ, but it is really hard to see which ones because of the cluttered comparison report:
 
-- 🔍 **Quicker identification** of differences in large & nested objects
-- 📊 **Focused output** that highlights what matters
-- 🎯 **Direct navigation** to specific changes
-- 📋 **Structured diffs** for complex data
+- **Quicker identification** of differences in large & nested objects
+- **Focused output** that highlights what matters
+- **Direct navigation** to specific changes
+- **Structured diffs** for complex data
 
 If you've ever struggled with understanding **WHAT EXACTLY** is mismatching in your `assert a == b` statement, `pytest-deepassert` is what you need!
 
-## ✨ How it works
+## How it works
 
 `pytest-deepassert` is a powerful pytest plugin built on [`deepdiff`](https://github.com/seperman/deepdiff) library. It provides **clear, detailed difference reports** for various data types:
 
-- 📦 **Basic types**: `int`, `string`, `float`, `bool`
-- 📚 **Collections**: `dict`, `list`, `tuple`, `set`, `frozenset`
-- 🏗️ **Advanced types**: `OrderedDict`, `NamedTuple`, custom objects
-- 🔧 **Smart helpers**: Works with `pytest.approx()`, `mock.ANY`, and your custom comparators
+- **Basic types**: `int`, `string`, `float`, `bool`
+- **Collections**: `dict`, `list`, `tuple`, `set`, `frozenset`
+- **Advanced types**: `OrderedDict`, `NamedTuple`, custom objects
+- **Smart helpers**: Works with `pytest.approx()`, `mock.ANY`, and your custom comparators
 
 ## 🚀 Installation
 
@@ -68,46 +68,27 @@ pip install -e .
 
 **Requirements**: Python 3.8+ and pytest 6.0+
 
-## 🌟 Key Features
+## ✨ Key Features
 
-<table>
-<tr>
-<td width="50%">
+### **Precise Error Location**
+- Pinpoints **exact paths** where differences occur
+- No more hunting through massive data dumps
+- Shows **specific field names** and **array indices**
 
-### 🎯 **Precise Error Location**
-- 📍 Pinpoints **exact paths** where differences occur
-- 🚫 No more hunting through massive data dumps
-- 🔍 Shows **specific field names** and **array indices**
+### **Clear Change Description**
+- Shows `left value` → `right value` for each difference
+- Categorizes changes (values changed, items added/removed)
+- **Human-readable** change descriptions
 
-### 🔄 **Clear Change Description**
-- ➡️ Shows `left value` → `right value` for each difference
-- 📂 Categorizes changes (values changed, items added/removed)
-- 🏷️ **Human-readable** change descriptions
+### **Smart Comparison Helpers**
+- Works seamlessly with `pytest.approx()`, `mock.ANY`
+- Supports **custom comparison helpers**
+- Handles complex nested structures intelligently
 
-</td>
-<td width="50%">
-
-### 🧩 **Smart Comparison Helpers**
-- ✅ Works seamlessly with `pytest.approx()`, `mock.ANY`
-- 🔧 Supports **custom comparison helpers**
-- 🏗️ Handles complex nested structures intelligently
-
-### ⚡ **Zero Configuration**
-- 🚀 **Just install and it works** - no setup required
-- 🎛️ Can be disabled with `--no-deepassert` flag
-- 🔧 **Drop-in replacement** for standard assertions
-
-</td>
-</tr>
-</table>
-
-### 📊 **Enhanced Readability**
-
-| Standard pytest | pytest-deepassert |
-|---|---|
-| 📄 Comprehensive string diffs | ✨ Focused, categorized changes |
-| 🔍 Full context provided | 🎯 Precise error locations |
-| 📋 Complete information | 📋 Organized, scannable format |
+### **Zero Configuration**
+- **Just install and it works** - no setup required
+- Can be disabled with `--no-deepassert` flag
+- **Drop-in replacement** for standard assertions
 
 ---
 
@@ -115,12 +96,12 @@ pip install -e .
 
 > **TL;DR**: Standard pytest assertions work great for simple cases, but `pytest-deepassert` provides enhanced clarity for complex data structures.
 
-### 📋 Example 1: Complex Dictionary Comparison
+### Example 1: Complex Dictionary Comparison
 
 Consider this realistic test with nested dictionaries:
 
 <details>
-<summary><strong>🔍 Click to see the test code</strong></summary>
+<summary><strong>Click to see the test code</strong></summary>
 
 ```python
 import pytest
@@ -175,7 +156,7 @@ def test_user_profile_comparison():
 #### 📄 **Standard pytest output**
 
 <details>
-<summary><strong>📋 Click to see the standard output</strong></summary>
+<summary><strong>Click to see the standard output</strong></summary>
 
 ```diff
 example_tests.py::test_user_profile_comparison FAILED
@@ -280,7 +261,7 @@ E     [... standard pytest diff continues below ...]
 `pytest-deepassert` seamlessly handles special comparison helpers:
 
 <details>
-<summary><strong>🔍 Click to see the test code</strong></summary>
+<summary><strong>Click to see the test code</strong></summary>
 
 ```python
 import pytest
@@ -313,7 +294,7 @@ def test_with_special_comparisons():
 #### 📄 **Standard pytest output**
 
 <details>
-<summary><strong>📋 Click to see the standard output</strong></summary>
+<summary><strong>Click to see the standard output</strong></summary>
 
 ```
 >       assert actual == expected
@@ -358,40 +339,22 @@ E     [... standard pytest diff continues below ...]
 
 ## 💡 Usage
 
-### 🚀 **Automatic Enhancement**
+### **Automatic Enhancement**
 
-Once installed, `pytest-deepassert` **automatically** enhances all your `==` assertions. No code changes required!
+Once installed, `pytest-deepassert` **automatically** enhances all your `==` assertions inside the tests. No code changes required!
 
-```python
-def test_my_data():
-    expected = {"a": 1, "b": {"c": 2, "d": 3}}
-    actual = {"a": 1, "b": {"c": 4, "d": 3}}
 
-    assert actual == expected  # ✨ Enhanced output automatically!
-```
+### **Configuration Options**
 
-### 🎛️ **Configuration Options**
-
-#### Disable for specific test runs
+#### Disable deepassert
 
 ```bash
 pytest --no-deepassert
 ```
 
-#### Disable for specific tests
-
-```python
-import pytest
-
-@pytest.mark.no_deepassert
-def test_without_enhancement():
-    # This test will use standard pytest assertions
-    assert actual == expected
-```
-
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 `pytest-deepassert` works out of the box with **zero configuration**. However, you can customize its behavior:
 
@@ -400,7 +363,6 @@ def test_without_enhancement():
 | Option | Description |
 |--------|-------------|
 | `--no-deepassert` | Disable pytest-deepassert for this test run |
-| `--deepassert-verbose` | Show additional debugging information |
 
 ### pytest.ini Configuration
 
@@ -411,48 +373,34 @@ addopts = --no-deepassert  # Disable by default
 
 ---
 
-## 🔧 API Reference
 
-### `pytest_deepassert.equal(left, right)`
+## Limitations
 
-For assertions outside test functions:
+Only enhances assertions in test functions (pytest limitation).
+If you want to have deep assertion reports in other places, consider using `pytest_deepassert.equal(left, right)` function.
 
 ```python
-from pytest_deepassert import equal
+import pytest_deepassert
 
-def validate_data(actual, expected):
-    equal(actual, expected)  # Enhanced diff on failure
+def helper_function_for_assertion(actual, expected):
+    pytest_deepassert.equal(actual, expected)  # Enhanced diff on failure
 ```
 
-**Parameters:**
-- `left`: The actual value
-- `right`: The expected value
-
-**Raises:**
-- `AssertionError`: With detailed diff report if values don't match
 
 ---
 
-## ⚠️ Limitations
-
-- **Scope**: Only enhances assertions in test functions (pytest limitation)
-- **Workaround**: Use `pytest_deepassert.equal()` for assertions outside tests
-- **Performance**: Minimal overhead for passing tests, slight overhead for failing tests
-
----
-
-## 📄 License
+## License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🔗 Links
+## Links
 
-- **📦 [PyPI Package](https://pypi.org/project/pytest-deepassert/)**
-- **🐙 [GitHub Repository](https://github.com/alexkuzmik/pytest-deepassert)**
-- **🐛 [Issue Tracker](https://github.com/alexkuzmik/pytest-deepassert/issues)**
-- **📚 [DeepDiff Library](https://github.com/seperman/deepdiff)**
+- **[PyPI Package](https://pypi.org/project/pytest-deepassert/)**
+- **[GitHub Repository](https://github.com/alexkuzmik/pytest-deepassert)**
+- **[Issue Tracker](https://github.com/alexkuzmik/pytest-deepassert/issues)**
+- **[DeepDiff Library](https://github.com/seperman/deepdiff)**
 
 ---
 
@@ -460,8 +408,9 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 **Made by [Alexander Kuzmik](https://github.com/alexkuzmik)**
 
-*This plugin comes from my desire to share a tool that I initially built for myself and my team while working on [https://github.com/comet-ml/opik](https://github.com/comet-ml/opik) python library. It's quite simple and yet it saved me a ton of time.*
+*This plugin comes from my desire to share a tool that I initially built for myself and my team while working on [Opik](https://github.com/comet-ml/opik) python library.
+It's built above another amazing open-sourced project - [deepdiff](https://github.com/seperman/deepdiff), so I guess I owe to the community a bit :).*
 
-*If this project helped you, please consider giving it a star on GitHub!*
+*If this project helped you, please consider giving it a ⭐ on GitHub!*
 
 </div>
