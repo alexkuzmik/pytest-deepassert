@@ -148,7 +148,7 @@ def test_user_profile_comparison():
         "permissions": ["read", "write", "admin", "delete"]  # Extra "delete" permission
     }
 
-    assert actual == expected
+    assert expected == actual
 ```
 
 </details>
@@ -158,65 +158,65 @@ def test_user_profile_comparison():
 <details>
 <summary><strong>Click to see the standard output</strong></summary>
 
-```diff
-example_tests.py::test_user_profile_comparison FAILED
+```
+example_test1.py::test_user_profile_comparison FAILED
 
 ======================================== FAILURES ========================================
 _________________________ test_user_profile_comparison _________________________
-example_tests.py:47: in test_user_profile_comparison
-    assert actual == expected
-E   AssertionError: assert {'user': {'id': 123, 'name': 'Jane Doe', 'email': 'jane@example.com', 'preferences': {'theme': 'light', 'notifications': True, 'language': 'es'}, 'metadata': {'created_at': '2023-01-01T10:30:00Z', 'last_login': '2023-11-30', 'login_count': 45, 'score': 85.52}}, 'permissions': ['read', 'write', 'admin', 'delete']} == {'user': {'id': 123, 'name': 'John Doe', 'email': 'john@example.com', 'preferences': {'theme': 'dark', 'notifications': True, 'language': 'en'}, 'metadata': {'created_at': <ANY>, 'last_login': '2023-12-01', 'login_count': 42, 'score': 85.5 ± 0.1}}, 'permissions': ['read', 'write', 'admin']}
+example_test1.py:45: in test_user_profile_comparison
+    assert expected == actual
+E   AssertionError: assert {'user': {'id': 123, 'name': 'John Doe', 'email': 'john@example.com', 'preferences': {'theme': 'dark', 'notifications': True, 'language': 'en'}, 'metadata': {'created_at': <ANY>, 'last_login': '2023-12-01', 'login_count': 42, 'score': 85.5 ± 0.1}}, 'permissions': ['read', 'write', 'admin']} == {'user': {'id': 123, 'name': 'Jane Doe', 'email': 'jane@example.com', 'preferences': {'theme': 'light', 'notifications': True, 'language': 'es'}, 'metadata': {'created_at': '2023-01-01T10:30:00Z', 'last_login': '2023-11-30', 'login_count': 45, 'score': 85.52}}, 'permissions': ['read', 'write', 'admin', 'delete']}
 
-E
+E     
 E     Differing items:
-E     {'permissions': ['read', 'write', 'admin', 'delete']} != {'permissions': ['read', 'write', 'admin']}
-E     {'user': {'email': 'jane@example.com', 'id': 123, 'metadata': {'created_at': '2023-01-01T10:30:00Z', 'last_login': '2023-11-30', 'login_count': 45, 'score': 85.52}, 'name': 'Jane Doe', ...}} != {'user': {'email': 'john@example.com', 'id': 123, 'metadata': {'created_at': <ANY>, 'last_login': '2023-12-01', 'login_count': 42, 'score': 85.5 ± 0.1}, 'name': 'John Doe', ...}}
+E     {'permissions': ['read', 'write', 'admin']} != {'permissions': ['read', 'write', 'admin', 'delete']}
+E     {'user': {'email': 'john@example.com', 'id': 123, 'metadata': {'created_at': <ANY>, 'last_login': '2023-12-01', 'login_count': 42, 'score': 85.5 ± 0.1}, 'name': 'John Doe', ...}} != {'user': {'email': 'jane@example.com', 'id': 123, 'metadata': {'created_at': '2023-01-01T10:30:00Z', 'last_login': '2023-11-30', 'login_count': 45, 'score': 85.52}, 'name': 'Jane Doe', ...}}
 
-E
+E     
 E     Full diff:
 E       {
 E           'permissions': [
 E               'read',
 E               'write',
 E               'admin',
-E     +         'delete',
+E     -         'delete',
 E           ],
 E           'user': {
-E     -         'email': 'john@example.com',
+E     -         'email': 'jane@example.com',
+E     ?                    ^ -
+E     +         'email': 'john@example.com',
 E     ?                    ^^
-E     +         'email': 'jane@example.com',
-E     ?                    ^ +
 E               'id': 123,
 E               'metadata': {
-E     -             'created_at': <ANY>,
-E     +             'created_at': '2023-01-01T10:30:00Z',
-E     -             'last_login': '2023-12-01',
-E     ?                                  ^  -
-E     +             'last_login': '2023-11-30',
-E     ?                                  ^ +
-E     -             'login_count': 42,
+E     -             'created_at': '2023-01-01T10:30:00Z',
+E     +             'created_at': <ANY>,
+E     -             'last_login': '2023-11-30',
+E     ?                                   ---
+E     +             'last_login': '2023-12-01',
+E     ?                                  +++
+E     -             'login_count': 45,
 E     ?                             ^
-E     +             'login_count': 45,
+E     +             'login_count': 42,
 E     ?                             ^
-E     -             'score': 85.5 ± 0.1,
-E     ?                          ^^^^^^
-E     +             'score': 85.52,
+E     -             'score': 85.52,
 E     ?                          ^
+E     +             'score': 85.5 ± 0.1,
+E     ?                          ^^^^^^
 E               },
-E     -         'name': 'John Doe',
+E     -         'name': 'Jane Doe',
+E     ?                   ^ -
+E     +         'name': 'John Doe',
 E     ?                   ^^
-E     +         'name': 'Jane Doe',
-E     ?                   ^ +
 E               'preferences': {
-E     -             'language': 'en',
+E     -             'language': 'es',
 E     ?                           ^
-E     +             'language': 'es',
+E     +             'language': 'en',
 E     ?                           ^
 E                   'notifications': True,
-E     -             'theme': 'dark',
-E     ?                       ^^^^
-E     +             'theme': 'light',
+E     -             'theme': 'light',
 E     ?                       ^^^^^
+E     +             'theme': 'dark',
+E     ?                       ^^^^
 E               },
 E           },
 E       }
@@ -226,14 +226,14 @@ E       }
 
 #### ✨ **With pytest-deepassert** (with `pytest -vv`)
 
-```diff
-example_tests.py::test_user_profile_comparison FAILED
+```
+example_test1.py::test_user_profile_comparison FAILED
 
 ======================================== FAILURES ========================================
 _________________________ test_user_profile_comparison _________________________
-example_tests.py:47: in test_user_profile_comparison
-    assert actual == expected
-E   assert
+example_test1.py:45: in test_user_profile_comparison
+    assert expected == actual
+E   assert 
 E     DeepAssert detailed comparison:
 E         Item root['permissions'][3] added to iterable.
 E         Value of root['user']['name'] changed from "John Doe" to "Jane Doe".
@@ -242,7 +242,7 @@ E         Value of root['user']['preferences']['theme'] changed from "dark" to "
 E         Value of root['user']['preferences']['language'] changed from "en" to "es".
 E         Value of root['user']['metadata']['last_login'] changed from "2023-12-01" to "2023-11-30".
 E         Value of root['user']['metadata']['login_count'] changed from 42 to 45.
-E
+E     
 E     [... standard pytest diff continues below ...]
 ```
 
@@ -286,7 +286,7 @@ def test_with_special_comparisons():
         }
     }
 
-    assert actual == expected
+    assert expected == actual
 ```
 
 </details>
@@ -297,27 +297,37 @@ def test_with_special_comparisons():
 <summary><strong>Click to see the standard output</strong></summary>
 
 ```
->       assert actual == expected
-E       AssertionError: assert {'timestamp': '2023-12-01T10:30:00Z', 'value': 3.1416, 'metadata': {'version': '1.0.1', 'debug': False}} == {'timestamp': <ANY>, 'value': 3.14159 ± 0.001, 'metadata': {'version': '1.0.0', 'debug': False}}
-E
-E       Differing items:
-E       {'metadata': {'version': '1.0.1', 'debug': False}} != {'metadata': {'version': '1.0.0', 'debug': False}}
-E       {'timestamp': '2023-12-01T10:30:00Z'} != {'timestamp': <ANY>}
-E       {'value': 3.1416} != {'value': 3.14159 ± 0.001}
-E
-E       Full diff:
-E         {
-E       -     'metadata': {'debug': False, 'version': '1.0.0'},
-E       ?                                           ^
-E       +     'metadata': {'debug': False, 'version': '1.0.1'},
-E       ?                                           ^
-E       -     'timestamp': <ANY>,
-E       +     'timestamp': '2023-12-01T10:30:00Z',
-E       -     'value': 3.14159 ± 0.001,
-E       ?                    ^^^^^^^^
-E       +     'value': 3.1416,
-E       ?                   ^
-E         }
+example_test2.py::test_with_special_comparisons FAILED
+
+======================================== FAILURES ========================================
+______________________________________ test_with_special_comparisons _______________________________________
+example_test2.py:23: in test_with_special_comparisons
+    assert expected == actual
+E   AssertionError: assert {'timestamp': <ANY>, 'value': 3.14159 ± 0.001, 'metadata': {'version': '1.0.0', 'debug': False}} == {'timestamp': '2023-12-01T10:30:00Z', 'value': 3.1416, 'metadata': {'version': '1.0.1', 'debug': False}}
+
+E     
+E     Common items:
+E     {'timestamp': <ANY>, 'value': 3.14159 ± 0.001}
+E     Differing items:
+E     {'metadata': {'debug': False, 'version': '1.0.0'}} != {'metadata': {'debug': False, 'version': '1.0.1'}}
+
+E     
+E     Full diff:
+E       {
+E           'metadata': {
+E               'debug': False,
+E     -         'version': '1.0.1',
+E     ?                         ^
+E     +         'version': '1.0.0',
+E     ?                         ^
+E           },
+E     -     'timestamp': '2023-12-01T10:30:00Z',
+E     +     'timestamp': <ANY>,
+E     -     'value': 3.1416,
+E     ?                   ^
+E     +     'value': 3.14159 ± 0.001,
+E     ?                   ^^^^^^^^^^
+E       }
 ```
 
 </details>
@@ -325,11 +335,16 @@ E         }
 #### ✨ **With pytest-deepassert**
 
 ```
->       assert actual == expected
-E   assert
+example_test2.py::test_with_special_comparisons FAILED
+
+======================================== FAILURES ========================================
+______________________________________ test_with_special_comparisons _______________________________________
+example_test2.py:23: in test_with_special_comparisons
+    assert expected == actual
+E   assert 
 E     DeepAssert detailed comparison:
 E         Value of root['metadata']['version'] changed from "1.0.0" to "1.0.1".
-E
+E     
 E     [... standard pytest diff continues below ...]
 ```
 
