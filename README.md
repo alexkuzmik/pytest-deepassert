@@ -30,7 +30,7 @@
 
 ---
 
-## Why pytest-deepassert?
+## What is it for?
 
 When testing complex data structures equality, you may have situations when only some small details differ, but it is really hard to see which ones because of the cluttered comparison report:
 
