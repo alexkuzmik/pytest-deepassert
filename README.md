@@ -6,19 +6,41 @@ A pytest plugin for enhanced assertion reporting with detailed diffs powered by 
 
 When testing complex data structures, standard pytest assertions can be really inconvenient as their report messages are based on string comparisons. 
 
-`pytest_deepassert` is based on `deepdiff` library which can generate very detailed difference reports for various types of objects: int, string, dict, list, tuple, set, frozenset, OrderedDict, NamedTuple and even custom objects!
-
 So, if you ever struggled with understanding WHAT EXACTLY is mismatching in your `assert a == b`, `pytest_deepassert` is what you need.
+
+## What is pytest-deepassert?
+
+`pytest_deepassert` is based on `deepdiff` library which can generate very detailed difference reports for various types of objects: int, string, dict, list, tuple, set, frozenset, OrderedDict, NamedTuple and even custom objects!
 
 ## Installation
 
 ```bash
-# Install from PyPI (when published)
 pip install pytest-deepassert
 
 # Install in development mode
 pip install -e ".[dev]"
 ```
+
+## Key Benefits
+
+### 🎯 **Precise Error Location**
+- Pinpoints exact paths where differences occur
+- No more hunting through massive data dumps
+
+### 🔍 **Clear Change Description**
+- Shows old value → new value for each difference
+- Categorizes changes (values changed, items added/removed, etc.)
+
+### 🧩 **Smart Comparison Helpers**
+- Works seamlessly with `pytest.approx()`, `mock.ANY`, and any other comparison helpers that you may have implemented already for your project.
+- Handles complex nested structures intelligently, even custom objects.
+
+### 📊 **Better Readability**
+- Clean, formatted, not cluttered output that's easy to scan
+
+### ⚡ **Zero Configuration**
+- Just install and it works
+- Can be disabled with `--no-deepassert` flag
 
 ## The Problem with Standard Pytest Assertions
 
@@ -68,7 +90,7 @@ def test_user_profile_comparison():
                 "score": 85.52  # Close enough to match approx
             }
         },
-        "permissions": ["read", "write"]  # Missing "admin"
+        "permissions": ["read", "write", "admin", "delete"]  # Extra "delete" permission
     }
     
     assert actual == expected
@@ -82,11 +104,11 @@ example_tests.py::test_user_profile_comparison FAILED
 _________________________ test_user_profile_comparison _________________________
 example_tests.py:47: in test_user_profile_comparison
     assert actual == expected
-E   AssertionError: assert {'user': {'id': 123, 'name': 'Jane Doe', 'email': 'jane@example.com', 'preferences': {'theme': 'light', 'notifications': True, 'language': 'es'}, 'metadata': {'created_at': '2023-01-01T10:30:00Z', 'last_login': '2023-11-30', 'login_count': 45, 'score': 85.52}}, 'permissions': ['read', 'write']} == {'user': {'id': 123, 'name': 'John Doe', 'email': 'john@example.com', 'preferences': {'theme': 'dark', 'notifications': True, 'language': 'en'}, 'metadata': {'created_at': <ANY>, 'last_login': '2023-12-01', 'login_count': 42, 'score': 85.5 ± 0.1}}, 'permissions': ['read', 'write', 'admin']}
+E   AssertionError: assert {'user': {'id': 123, 'name': 'Jane Doe', 'email': 'jane@example.com', 'preferences': {'theme': 'light', 'notifications': True, 'language': 'es'}, 'metadata': {'created_at': '2023-01-01T10:30:00Z', 'last_login': '2023-11-30', 'login_count': 45, 'score': 85.52}}, 'permissions': ['read', 'write', 'admin', 'delete']} == {'user': {'id': 123, 'name': 'John Doe', 'email': 'john@example.com', 'preferences': {'theme': 'dark', 'notifications': True, 'language': 'en'}, 'metadata': {'created_at': <ANY>, 'last_login': '2023-12-01', 'login_count': 42, 'score': 85.5 ± 0.1}}, 'permissions': ['read', 'write', 'admin']}
 
 E     
 E     Differing items:
-E     {'permissions': ['read', 'write']} != {'permissions': ['read', 'write', 'admin']}
+E     {'permissions': ['read', 'write', 'admin', 'delete']} != {'permissions': ['read', 'write', 'admin']}
 E     {'user': {'email': 'jane@example.com', 'id': 123, 'metadata': {'created_at': '2023-01-01T10:30:00Z', 'last_login': '2023-11-30', 'login_count': 45, 'score': 85.52}, 'name': 'Jane Doe', ...}} != {'user': {'email': 'john@example.com', 'id': 123, 'metadata': {'created_at': <ANY>, 'last_login': '2023-12-01', 'login_count': 42, 'score': 85.5 ± 0.1}, 'name': 'John Doe', ...}}
 
 E     
@@ -95,7 +117,8 @@ E       {
 E           'permissions': [
 E               'read',
 E               'write',
-E     -         'admin',
+E               'admin',
+E     +         'delete',
 E           ],
 E           'user': {
 E     -         'email': 'john@example.com',
@@ -148,7 +171,7 @@ example_tests.py:47: in test_user_profile_comparison
     assert actual == expected
 E   assert 
 E     DeepAssert detailed comparison:
-E         Item root['permissions'][2] removed from iterable.
+E         Item root['permissions'][3] added to iterable.
 E         Value of root['user']['name'] changed from "John Doe" to "Jane Doe".
 E         Value of root['user']['email'] changed from "john@example.com" to "jane@example.com".
 E         Value of root['user']['preferences']['theme'] changed from "dark" to "light".
@@ -159,10 +182,10 @@ E
 E     [... standard pytest diff continues below ...]
 ```
 
-**Notice how pytest-deepassert:**
+**Notice how `pytest-deepassert`:**
 - ✅ **Ignores `created_at`** - because it matches `ANY`
 - ✅ **Ignores `score`** - because `85.52` is within `pytest.approx(85.5, abs=0.1)`
-- 🎯 **Only shows actual differences** - name, email, theme, language, last_login, login_count, and missing admin permission
+- 🎯 **Only shows actual differences** - name, email, theme, language, last_login, login_count, and added delete permission
 
 ### Example 2: List of Objects with Special Comparisons
 
@@ -243,7 +266,7 @@ E           },
 E       ]
 ```
 
-**With pytest-deepassert (with `pytest -vv`):**
+**With `pytest-deepassert`:**
 ```
 example_tests.py::test_api_response_comparison FAILED
 
@@ -263,14 +286,14 @@ E
 E     [... standard pytest diff continues below ...]
 ```
 
-**Notice how pytest-deepassert:**
+**Notice how `pytest-deepassert`:**
 - ✅ **Ignores `root[0]['price']`** - because `19.98` is within `pytest.approx(19.99, rel=0.01)`
 - ✅ **Ignores `root[1]['created_at']`** - because `"2023-12-01"` matches `ANY`
 - 🎯 **Only shows actual differences** - price and stock changes for Product B, and all changes for the third item
 
 ### Example 3: Working with pytest.approx and mock.ANY
 
-pytest-deepassert seamlessly handles special comparison helpers:
+`pytest-deepassert` seamlessly handles special comparison helpers:
 
 ```python
 import pytest
@@ -298,36 +321,16 @@ def test_with_special_comparisons():
     assert actual == expected
 ```
 
-**With pytest-deepassert:**
+**With `pytest-deepassert`:**
 ```
-DeepAssert detailed comparison:
-    Values changed:
-    root['metadata']['version']: '1.0.0' --> '1.0.1'
-    
-    # Note: timestamp and value differences are ignored due to ANY and approx()
+>       assert actual == expected
+E   assert 
+E     DeepAssert detailed comparison:
+E         Value of root['metadata']['version'] changed from "1.0.0" to "1.0.1".
+E     
+E     [... standard pytest diff continues below ...]
 ```
 
-## Key Benefits
-
-### 🎯 **Precise Error Location**
-- Pinpoints exact paths where differences occur
-- No more hunting through massive data dumps
-
-### 🔍 **Clear Change Description**
-- Shows old value → new value for each difference
-- Categorizes changes (values changed, items added/removed, etc.)
-
-### 🧩 **Smart Comparison Helpers**
-- Works seamlessly with `pytest.approx()`, `mock.ANY`, and any other comparison helpers that you may have even implemented already for your project.
-- Handles complex nested structures intelligently
-
-### 📊 **Better Readability**
-- Clean, formatted output that's easy to scan
-- Hierarchical display of nested changes
-
-### ⚡ **Zero Configuration**
-- Just install and it works
-- Can be disabled with `--no-deepassert` flag
 
 ## Usage
 
