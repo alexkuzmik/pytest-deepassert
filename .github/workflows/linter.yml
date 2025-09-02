@@ -4,7 +4,7 @@ run-name: "Linter ${{ github.ref_name }} by @${{ github.actor }}"
 on:
   pull_request:
   push:
-    branches: 
+    branches:
       - 'main'
 jobs:
   lint:

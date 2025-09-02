@@ -7,7 +7,7 @@ on:
       - 'tests/**'
       - 'pyproject.toml'
   push:
-    branches: 
+    branches:
       - 'main'
     paths:
       - 'src/**'
