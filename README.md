@@ -167,12 +167,12 @@ example_test1.py:45: in test_user_profile_comparison
     assert expected == actual
 E   AssertionError: assert {'user': {'id': 123, 'name': 'John Doe', 'email': 'john@example.com', 'preferences': {'theme': 'dark', 'notifications': True, 'language': 'en'}, 'metadata': {'created_at': <ANY>, 'last_login': '2023-12-01', 'login_count': 42, 'score': 85.5 ± 0.1}}, 'permissions': ['read', 'write', 'admin']} == {'user': {'id': 123, 'name': 'Jane Doe', 'email': 'jane@example.com', 'preferences': {'theme': 'light', 'notifications': True, 'language': 'es'}, 'metadata': {'created_at': '2023-01-01T10:30:00Z', 'last_login': '2023-11-30', 'login_count': 45, 'score': 85.52}}, 'permissions': ['read', 'write', 'admin', 'delete']}
 
-E     
+E
 E     Differing items:
 E     {'permissions': ['read', 'write', 'admin']} != {'permissions': ['read', 'write', 'admin', 'delete']}
 E     {'user': {'email': 'john@example.com', 'id': 123, 'metadata': {'created_at': <ANY>, 'last_login': '2023-12-01', 'login_count': 42, 'score': 85.5 ± 0.1}, 'name': 'John Doe', ...}} != {'user': {'email': 'jane@example.com', 'id': 123, 'metadata': {'created_at': '2023-01-01T10:30:00Z', 'last_login': '2023-11-30', 'login_count': 45, 'score': 85.52}, 'name': 'Jane Doe', ...}}
 
-E     
+E
 E     Full diff:
 E       {
 E           'permissions': [
@@ -233,7 +233,7 @@ example_test1.py::test_user_profile_comparison FAILED
 _________________________ test_user_profile_comparison _________________________
 example_test1.py:45: in test_user_profile_comparison
     assert expected == actual
-E   assert 
+E   assert
 E     DeepAssert detailed comparison:
 E         Item root['permissions'][3] added to iterable.
 E         Value of root['user']['name'] changed from "John Doe" to "Jane Doe".
@@ -242,7 +242,7 @@ E         Value of root['user']['preferences']['theme'] changed from "dark" to "
 E         Value of root['user']['preferences']['language'] changed from "en" to "es".
 E         Value of root['user']['metadata']['last_login'] changed from "2023-12-01" to "2023-11-30".
 E         Value of root['user']['metadata']['login_count'] changed from 42 to 45.
-E     
+E
 E     [... standard pytest diff continues below ...]
 ```
 
@@ -305,13 +305,13 @@ example_test2.py:23: in test_with_special_comparisons
     assert expected == actual
 E   AssertionError: assert {'timestamp': <ANY>, 'value': 3.14159 ± 0.001, 'metadata': {'version': '1.0.0', 'debug': False}} == {'timestamp': '2023-12-01T10:30:00Z', 'value': 3.1416, 'metadata': {'version': '1.0.1', 'debug': False}}
 
-E     
+E
 E     Common items:
 E     {'timestamp': <ANY>, 'value': 3.14159 ± 0.001}
 E     Differing items:
 E     {'metadata': {'debug': False, 'version': '1.0.0'}} != {'metadata': {'debug': False, 'version': '1.0.1'}}
 
-E     
+E
 E     Full diff:
 E       {
 E           'metadata': {
@@ -341,10 +341,10 @@ example_test2.py::test_with_special_comparisons FAILED
 ______________________________________ test_with_special_comparisons _______________________________________
 example_test2.py:23: in test_with_special_comparisons
     assert expected == actual
-E   assert 
+E   assert
 E     DeepAssert detailed comparison:
 E         Value of root['metadata']['version'] changed from "1.0.0" to "1.0.1".
-E     
+E
 E     [... standard pytest diff continues below ...]
 ```
 
