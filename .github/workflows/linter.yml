@@ -3,13 +3,9 @@ name: Linter
 run-name: "Linter ${{ github.ref_name }} by @${{ github.actor }}"
 on:
   pull_request:
-    paths:
-    - 'src/**'
   push:
     branches: 
       - 'main'
-    paths:
-      - 'src/**'
 jobs:
   lint:
     runs-on: ubuntu-latest
