@@ -187,7 +187,7 @@ E     [... standard pytest diff continues below ...]
 
 ### Example 2: Working with pytest.approx and mock.ANY
 
-`pytest-deepassert` seamlessly handles special comparison helpers:
+`pytest-deepassert` seamlessly handles special comparison helpers, whereas the default pytest behavior is to highlight string representation difference:
 
 ```python
 import pytest
