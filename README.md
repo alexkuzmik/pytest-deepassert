@@ -310,9 +310,40 @@ def test_with_special_comparisons():
 
 </details>
 
+#### 📄 **Standard pytest output**
+
+<details>
+<summary><strong>📋 Click to see the standard output</strong></summary>
+
+```
+>       assert actual == expected
+E       AssertionError: assert {'timestamp': '2023-12-01T10:30:00Z', 'value': 3.1416, 'metadata': {'version': '1.0.1', 'debug': False}} == {'timestamp': <ANY>, 'value': 3.14159 ± 0.001, 'metadata': {'version': '1.0.0', 'debug': False}}
+E       
+E       Differing items:
+E       {'metadata': {'version': '1.0.1', 'debug': False}} != {'metadata': {'version': '1.0.0', 'debug': False}}
+E       {'timestamp': '2023-12-01T10:30:00Z'} != {'timestamp': <ANY>}
+E       {'value': 3.1416} != {'value': 3.14159 ± 0.001}
+E       
+E       Full diff:
+E         {
+E       -     'metadata': {'debug': False, 'version': '1.0.0'},
+E       ?                                           ^
+E       +     'metadata': {'debug': False, 'version': '1.0.1'},
+E       ?                                           ^
+E       -     'timestamp': <ANY>,
+E       +     'timestamp': '2023-12-01T10:30:00Z',
+E       -     'value': 3.14159 ± 0.001,
+E       ?                    ^^^^^^^^
+E       +     'value': 3.1416,
+E       ?                   ^
+E         }
+```
+
+</details>
+
 #### ✨ **With pytest-deepassert**
 
-```diff
+```
 >       assert actual == expected
 E   assert
 E     DeepAssert detailed comparison:
