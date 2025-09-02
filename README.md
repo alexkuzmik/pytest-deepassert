@@ -318,12 +318,12 @@ def test_with_special_comparisons():
 ```
 >       assert actual == expected
 E       AssertionError: assert {'timestamp': '2023-12-01T10:30:00Z', 'value': 3.1416, 'metadata': {'version': '1.0.1', 'debug': False}} == {'timestamp': <ANY>, 'value': 3.14159 ± 0.001, 'metadata': {'version': '1.0.0', 'debug': False}}
-E       
+E
 E       Differing items:
 E       {'metadata': {'version': '1.0.1', 'debug': False}} != {'metadata': {'version': '1.0.0', 'debug': False}}
 E       {'timestamp': '2023-12-01T10:30:00Z'} != {'timestamp': <ANY>}
 E       {'value': 3.1416} != {'value': 3.14159 ± 0.001}
-E       
+E
 E       Full diff:
 E         {
 E       -     'metadata': {'debug': False, 'version': '1.0.0'},
