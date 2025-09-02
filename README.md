@@ -1,5 +1,8 @@
+<div align="center">
+    
 # 🔍 pytest-deepassert
 
+</div>
 <div align="center">
 
 [![PyPI version](https://badge.fury.io/py/pytest-deepassert.svg)](https://pypi.org/project/pytest-deepassert/)
@@ -30,9 +33,9 @@
 
 ---
 
-## Why pytest-deepassert?
+## What is it for?
 
-When testing complex data structures equality, you may have situations when only some small details differ, but it is really hard to see which ones because of the cluttered comparison report:
+When testing that one complex data structure equals another, you may have situations when only some small details differ, but it is really hard to see which ones because of the cluttered comparison report. That's when `pytest-deepassert` helps:
 
 - **Quicker identification** of differences in large & nested objects
 - **Focused output** that highlights what matters
@@ -43,7 +46,7 @@ If you've ever struggled with understanding **WHAT EXACTLY** is mismatching in y
 
 ## How it works
 
-`pytest-deepassert` is a powerful pytest plugin built on [`deepdiff`](https://github.com/seperman/deepdiff) library. It provides **clear, detailed difference reports** for various data types:
+`pytest-deepassert` is a pytest plugin built on powerful [`deepdiff`](https://github.com/seperman/deepdiff) library. It provides **clear, detailed difference reports** for various data types:
 
 - **Basic types**: `int`, `string`, `float`, `bool`
 - **Collections**: `dict`, `list`, `tuple`, `set`, `frozenset`
