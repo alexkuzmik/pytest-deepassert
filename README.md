@@ -1,5 +1,8 @@
+<div align="center">
+    
 # 🔍 pytest-deepassert
 
+</div>
 <div align="center">
 
 [![PyPI version](https://badge.fury.io/py/pytest-deepassert.svg)](https://pypi.org/project/pytest-deepassert/)
