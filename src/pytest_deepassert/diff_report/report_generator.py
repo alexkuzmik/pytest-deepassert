@@ -32,7 +32,7 @@ def generate_diff_report_lines(
 def format_diff_report_lines(diff_report_lines: List[str]) -> str:
     result_lines: List[str] = []
 
-    if len(diff_report_lines):
+    if len(diff_report_lines) == 0:
         return ""
 
     result_lines.append("")
