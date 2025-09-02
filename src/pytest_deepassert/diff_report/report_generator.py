@@ -20,6 +20,7 @@ def generate_diff_report_lines(
             expected,
             actual,
             custom_operators=[custom_operator],
+            verbose_level=2,
             **kwargs,
         )
 

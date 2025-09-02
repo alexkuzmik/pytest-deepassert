@@ -1,5 +1,5 @@
 <div align="center">
-    
+
 # 🔍 pytest-deepassert
 
 </div>
@@ -238,7 +238,7 @@ example_test1.py:45: in test_user_profile_comparison
     assert expected == actual
 E   assert
 E     DeepAssert detailed comparison:
-E         Item root['permissions'][3] added to iterable.
+E         Item root['permissions'][3] ("delete") added to iterable.
 E         Value of root['user']['name'] changed from "John Doe" to "Jane Doe".
 E         Value of root['user']['email'] changed from "john@example.com" to "jane@example.com".
 E         Value of root['user']['preferences']['theme'] changed from "dark" to "light".
