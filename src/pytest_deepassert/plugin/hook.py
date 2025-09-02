@@ -34,7 +34,6 @@ def pytest_assertrepr_compare(
     if config.getoption("--no-deepassert"):
         return None
 
-    # Only handle equality comparisons
     if op != "==":
         return None
 
@@ -48,7 +47,7 @@ def pytest_assertrepr_compare(
 
     result = []
 
-    result.extend(_formatted_deepassert_diff_lines(diff_lines))
+    result.extend(diff_report.format_diff_report_lines(diff_lines).split("\n"))
     result.append("")
 
     standard_diff = _pytest.assertion.util.assertrepr_compare(config, op, left, right)
@@ -56,21 +55,5 @@ def pytest_assertrepr_compare(
     if standard_diff:
         result.extend(standard_diff)
         result.append("")
-
-    return result
-
-
-def _formatted_deepassert_diff_lines(diff_lines: List[str]) -> List[str]:
-    result = []
-
-    if len(diff_lines) == 0:
-        return []
-
-    result.append("")
-    result.append("DeepAssert detailed comparison:")
-
-    for line in diff_lines:
-        if line.strip():
-            result.append(f"    {line}")
 
     return result

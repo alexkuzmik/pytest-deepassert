@@ -27,3 +27,19 @@ def generate_diff_report_lines(
     except Exception:
         LOGGER.debug("Failed to generate diff report", exc_info=True)
         return None
+
+
+def format_diff_report_lines(diff_report_lines: List[str]) -> str:
+    result_lines: List[str] = []
+
+    if len(diff_report_lines):
+        return ""
+
+    result_lines.append("")
+    result_lines.append("DeepAssert detailed comparison:")
+
+    for line in diff_report_lines:
+        if line.strip():
+            result_lines.append(f"    {line}")
+
+    return "\n".join(result_lines)

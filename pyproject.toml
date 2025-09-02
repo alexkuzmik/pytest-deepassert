@@ -6,6 +6,7 @@ build-backend = "hatchling.build"
 name = "pytest-deepassert"
 version = "0.1.0"
 description = "A pytest plugin for enhanced assertion reporting with detailed diffs"
+readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
