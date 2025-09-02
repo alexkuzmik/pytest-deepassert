@@ -387,8 +387,8 @@ pytest --no-deepassert
 
 ## Limitations
 
-The tool only enhances assertions inside the test functions (pytest limitation).
-If you want to have deep assertion reports in other places (e.g. helper functions for your test), consider using `pytest_deepassert.equal(left, right)` function.
+The tool only enhances assertions inside the test modules (pytest limitation).
+If you want to have deep assertion reports in the other modules of your project (e.g. some helper functions for your testlib), consider using `pytest_deepassert.equal(left, right)` function.
 
 ```python
 import pytest_deepassert
