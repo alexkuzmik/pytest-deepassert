@@ -420,7 +420,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 **Made by [Alexander Kuzmik](https://github.com/alexkuzmik)**
 
 *This plugin comes from my desire to share a small tool that I initially built for myself and my team while working on [Opik](https://github.com/comet-ml/opik) python library.
-It's built on another amazing open-sourced project - [deepdiff](https://github.com/seperman/deepdiff), so I guess I owe to the community a bit :).*
+It's built on top of another amazing open-sourced project - [deepdiff](https://github.com/seperman/deepdiff), so I guess I owe to the community a bit :).*
 
 *If this project helped you, please consider giving it a ⭐ on GitHub!*
 
