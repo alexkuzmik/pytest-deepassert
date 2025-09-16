@@ -51,7 +51,6 @@ If you've ever struggled with understanding **WHAT EXACTLY** is mismatching in y
 - **Basic types**: `int`, `string`, `float`, `bool`
 - **Collections**: `dict`, `list`, `tuple`, `set`, `frozenset`
 - **Advanced types**: `OrderedDict`, `NamedTuple`, custom objects
-- **Smart helpers**: Works with `pytest.approx()`, `mock.ANY`, and your custom comparators
 
 ## 🚀 Installation
 
