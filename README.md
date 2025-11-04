@@ -392,7 +392,7 @@ For use cases where you need enhanced assertions outside of test modules (e.g., 
 
 **Parameters:**
 - `left` (Any): The expected object
-- `right` (Any): The actual object  
+- `right` (Any): The actual object
 - `verbose_level` (int, optional): Controls the verbosity of the diff report. Default: `2`
   - `0`: Minimal output (only reports if objects are different)
   - `1`: Standard output (shows changes with brief details)
@@ -406,7 +406,7 @@ import pytest_deepassert
 def helper_function_for_assertion(actual, expected):
     # Use default verbose_level=2 for detailed output
     pytest_deepassert.equal(expected, actual)
-    
+
 def another_helper(actual, expected):
     # Use verbose_level=1 for less detailed output
     pytest_deepassert.equal(expected, actual, verbose_level=1)
