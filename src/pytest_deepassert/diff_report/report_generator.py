@@ -1,4 +1,4 @@
-from typing import Any, Optional, List
+from typing import Any, List
 
 from . import compare_helpers_deepdiff_operator
 import deepdiff
@@ -9,8 +9,8 @@ LOGGER = logging.getLogger(__name__)
 
 
 def generate_diff_report_lines(
-    expected: Any, actual: Any, **kwargs: Any
-) -> Optional[List[str]]:
+    expected: Any, actual: Any, verbose_level: int = 2, **kwargs: Any
+) -> List[str]:
     try:
         custom_operator = (
             compare_helpers_deepdiff_operator.COMPARE_HELPERS_DEEPDIFF_OPERATOR
@@ -20,14 +20,14 @@ def generate_diff_report_lines(
             expected,
             actual,
             custom_operators=[custom_operator],
-            verbose_level=2,
+            verbose_level=verbose_level,
             **kwargs,
         )
 
         return diff.pretty().split("\n")
     except Exception:
         LOGGER.debug("Failed to generate diff report", exc_info=True)
-        return None
+        return []
 
 
 def format_diff_report_lines(diff_report_lines: List[str]) -> str:

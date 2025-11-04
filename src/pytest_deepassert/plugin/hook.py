@@ -42,7 +42,7 @@ def pytest_assertrepr_compare(
 
     diff_lines = diff_report.generate_diff_report_lines(expected=left, actual=right)
 
-    if diff_lines is None or len(diff_lines) == 0:
+    if len(diff_lines) == 0:
         return None
 
     result = []
