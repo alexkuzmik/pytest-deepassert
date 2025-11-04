@@ -8,9 +8,9 @@ def pytest_addoption(parser):  # type: ignore
     """Add command line options for pytest-deepassert."""
     group = parser.getgroup("deepassert")
     group.addoption(
-        "--no-deepassert",
+        "--deepassert",
         action="store_true",
-        help="Disable deep assertion diffs from pytest-deepassert",
+        help="Enable deep assertion diffs from pytest-deepassert",
     )
 
 
@@ -31,7 +31,7 @@ def pytest_assertrepr_compare(
         A list of strings representing the formatted comparison output,
         or None if not handled.
     """
-    if config.getoption("--no-deepassert"):
+    if not config.getoption("--deepassert"):
         return None
 
     if op != "==":
