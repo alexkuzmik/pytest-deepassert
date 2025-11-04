@@ -86,10 +86,10 @@ pip install -e .
 - Works seamlessly with `pytest.approx()`, `mock.ANY` and any custom comparator utilities
 - Handles complex nested structures intelligently
 
-### **Zero Configuration**
-- **Just install and it works** - no setup required
-- Can be disabled with `--no-deepassert` flag
-- **Drop-in replacement** for standard assertions
+### **Simple Opt-In**
+- **Enable with `--deepassert` flag** - disabled by default to avoid interference
+- No additional configuration needed
+- **Drop-in replacement** for standard assertions when enabled
 
 ---
 
@@ -225,7 +225,7 @@ E       }
 
 </details>
 
-#### ✨ **With pytest-deepassert** (with `pytest -vv`)
+#### ✨ **With pytest-deepassert** (with `pytest --deepassert -vv`)
 
 ```
 example_test1.py::test_user_profile_comparison FAILED
@@ -355,30 +355,25 @@ E     [... standard pytest diff continues below ...]
 
 ## 💡 Usage
 
-### **Automatic Enhancement**
-
-Once installed, `pytest-deepassert` **automatically** enhances all your `==` assertions inside the tests. No code changes required!
-
-
-### **Configuration Options**
-
-#### Disable deepassert
+After installation, enable `pytest-deepassert` by passing the `--deepassert` flag when running pytest:
 
 ```bash
-pytest --no-deepassert
+pytest --deepassert
 ```
+
+This will enhance all your `==` assertions inside the tests. No code changes required!
 
 ---
 
 ## Configuration
 
-`pytest-deepassert` works out of the box with **zero configuration**. However, you can customize its behavior:
+`pytest-deepassert` is **disabled by default** to avoid any interference with your existing test suite. Enable it when needed:
 
 ### Command Line Options
 
 | Option | Description |
 |--------|-------------|
-| `--no-deepassert` | Disable pytest-deepassert for this test run |
+| `--deepassert` | Enable pytest-deepassert for this test run |
 
 
 ---
