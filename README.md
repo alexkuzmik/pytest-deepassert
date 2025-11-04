@@ -20,7 +20,7 @@
 
 ## Table of Contents
 
-- [Why pytest-deepassert?](#why-pytest-deepassert)
+- [What is it for?](#what-is-it-for)
 - [How it works](#how-it-works)
 - [Installation](#installation)
 - [Key Features](#key-features)
@@ -384,17 +384,42 @@ pytest --no-deepassert
 ---
 
 
-## Limitations
+## API Reference
 
-The tool only enhances assertions inside the test modules (pytest limitation).
-If you want to have deep assertion reports in the other modules of your project (e.g. some helper functions for your testlib), consider using `pytest_deepassert.equal(left, right)` function.
+### `pytest_deepassert.equal(left, right, verbose_level=2)`
+
+For use cases where you need enhanced assertions outside of test modules (e.g., in helper functions), you can use the `equal()` function directly.
+
+**Parameters:**
+- `left` (Any): The expected object
+- `right` (Any): The actual object  
+- `verbose_level` (int, optional): Controls the verbosity of the diff report. Default: `2`
+  - `0`: Minimal output (only reports if objects are different)
+  - `1`: Standard output (shows changes with brief details)
+  - `2`: Detailed output (shows full changes with all details and types)
+
+**Example:**
 
 ```python
 import pytest_deepassert
 
 def helper_function_for_assertion(actual, expected):
-    pytest_deepassert.equal(actual, expected)  # Enhanced diff on failure
+    # Use default verbose_level=2 for detailed output
+    pytest_deepassert.equal(expected, actual)
+    
+def another_helper(actual, expected):
+    # Use verbose_level=1 for less detailed output
+    pytest_deepassert.equal(expected, actual, verbose_level=1)
 ```
+
+**Note:** The traceback will automatically hide the internal frames of the `equal()` function, showing only where it was called from.
+
+---
+
+## Limitations
+
+The tool only enhances assertions inside the test modules (pytest limitation).
+If you want to have deep assertion reports in the other modules of your project (e.g. some helper functions for your testlib), consider using `pytest_deepassert.equal(left, right)` function as described in the [API Reference](#api-reference) section.
 
 
 ---
